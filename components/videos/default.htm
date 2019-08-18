@@ -1,16 +1,24 @@
 <h1>Videos</h1>
-<ul>
-{% for video in videos %}
-    <li>
-        <a href="https://www.youtube.com/watch?v={{ video.id.videoId }}">
-            <div><img width="80" height="80" src="{{ video.snippet.thumbnails.medium.url }}"></div>
-            <div>
-                <h6>{{ video.snippet.title }}</h6>
-                <span><i class="icon-clock"></i>
-                    {{ video.snippet.publishedAt1|date("m/d/Y") }}
-                </span>
-            </div>
-        </a>
-    </li>  
-{% endfor %}
-</ul>
+{% if videos %}
+    <ul>
+    {% for video in videos %}
+        <li>
+            <a href="https://www.youtube.com/watch?v={{ video.id.videoId }}">
+                <div><img width="80" height="80" src="{{ video.snippet.thumbnails.medium.url }}"></div>
+                <div>
+                    <h6>{{ video.snippet.title }}</h6>
+                    <span><i class="icon-clock"></i>
+                        {{ video.snippet.publishedAt1|date("m/d/Y") }}
+                    </span>
+                </div>
+            </a>
+        </li>  
+    {% endfor %}
+    </ul>
+{% else %}
+    <ul>
+        <li>
+            <h6>No Videos</h6>
+        </li>   
+    </ul>
+{% endif %}
